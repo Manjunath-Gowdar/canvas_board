@@ -1,0 +1,89 @@
+import './App.css';
+import fabric from "fabric"
+
+function App() {
+  return (
+    <div className="App">
+      <h3>top</h3>
+      
+      
+      <h3>down</h3>
+      <button className='btn btn-primary'>hello button</button>
+    </div>
+  );
+}
+
+export default App;
+
+
+ return (
+    <div className="App">
+      <h3>top</h3>
+      
+      
+      <h3>down</h3>
+      <button className='btn btn-primary'>hello button</button>
+    </div>
+  );
+}
+
+
+WORKING CODE WITH CIRCLE RECTANGLE AND TEXT BUT FREE DRAWING ON TOP OF IT.
+
+// import React from 'react'
+import React, { useEffect } from "react";
+
+import { fabric } from "fabric";
+
+const Canvas = () => {
+    useEffect(() => {
+        const canvas = new fabric.Canvas("my-fabric-canvas",{isDrawingMode:true});
+        
+        const circle = new fabric.Circle({
+            radius:5,
+            fill:'blue'
+        })
+        
+        const rect = new fabric.Rect({
+          width: 50,
+          height: 50,
+          fill: "blue",
+          angle: 10,
+          top: 20,
+          left: 20,
+          cornerColor:'red',
+        });
+        const textbox = new fabric.Textbox("You can start to draw here", {
+          fontSize: 20,
+          left: 50,
+          top: 100,
+          width: 200,
+        });
+        
+        canvas.add(textbox);
+        canvas.add(rect);
+        canvas.add(circle);
+        // canvas.add(basebrush);
+        
+        // UseEffect's cleanup function
+        // return () => {
+        //   canvas.dispose();
+        // };
+      });
+      
+      return (
+          <div className="App">
+          {/* <div className="color"> */}
+          <canvas
+            id="my-fabric-canvas"
+            className="color"
+            width="500"
+            height="300"
+          />
+          {/* </div> */}
+          <button className="btn btn-primary">hello button</button>
+        </div>
+      );
+}
+
+export default Canvas
